@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded',() =>{
+        // hacer que este la caja desabilitida
+        document.querySelector('#submit').disabled = true;
+        // activar en los casos que sea algo
+        document.querySelector('#task').onkeyup = () =>{
+          if (document.querySelector('#task').value.length > 0)
+            document.querySelector('#submit').disabled = false;
+          else
+            document.querySelector('#submit').disabled = true;
+        };
+          //
+          return false;
+
+
+
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='/js/socket.js') }}"></script>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/begin.css">
+
+  </head>
+  <body>
+    <div class="cont">
+      {% block body %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

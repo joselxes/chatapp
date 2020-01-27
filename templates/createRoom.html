@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}
+  ChatList
+
+{% endblock %}
+{% block body %}
+
+  <form class="" action="index.html" method="post">
+    <input type="text" id="newRoom" name="" value="">
+    <button type="button" name="button">Nombre nueva Sala</button>
+  </form>
+
+
+<ul>
+<li><div class="mensajes">
+  <img src="/static/imagenes/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+</li>
+<li>
+<div class="mensajes darker">
+  <img src="/static/imagenes/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+</li>
+<li>
+<div class="mensajes">
+  <img src="/static/imagenes/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <p>Sweet! So, what do you wanna do today?</p>
+  <span class="time-right">11:02</span>
+</div>
+</li>
+<li>
+<div class="mensajes darker">
+  <img src="/static/imagenes/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+  <span class="time-left">11:05</span>
+</div>
+</li>
+<ul/>
+<ul id="mensajes">
+
+</ul>
+  <div class="modal-content animate" id="new-task">
+
+
+    <div class="container">
+      <label for="uname"><b>{{nName}}</b></label>
+      <input type="text" id="mensaje" placeholder="Enter Username" name="uname" required>
+
+      <button class="intmss" id="submit">Entrar</button>
+
+    </div>
+
+    <!-- <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div> -->
+  </div>
+
+
+{% endblock %}
