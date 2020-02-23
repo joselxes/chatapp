@@ -2,20 +2,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Connect to websocket
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-
+    // document.querySelector('#yes').disabled = true;
+    // document.querySelector('#task').onkeyup = ()=>{
+    //
+    // }
+//
     // When connected, configure buttons
     socket.on('connect', () => {
 
         // Each button should emit a "submit vote" event
-        document.querySelector('#submit').onclick= ()=> {
-                const selection = document.querySelector('#mensaje').value;
-                socket.emit('submit mensaje', {'mss': selection});
-        };
+        document.querySelector('#canalForma').onsubmit = () => {
+                // const request = new XMLHttpRequest();
+                const newChannel = document.querySelector('#newChannel').value;
+                socket.emit('submit newChannel', {'newChannel': newChannel});
+                return false;
+            };
+
     });
 
     // When a new vote is announced, add to the unordered list
-    socket.on('announce mensaje', data => {
-        const li = document.createElement('li');
-        li.innerHTML = `Vote recorded: ${data.mss}`;
-        document.querySelector('#mensajes').append(li);
+    socket.on('announce newChannel', data => {
+        const flag= `${data.success}`;
+        alert(flag);
+        if (data["success"] === 0) {
+          const li = document.createElement('button');
+          li.innerHTML = `${data.success}: ${data.newChannel}`;
+        } else {
+          const li = document.createElement('button');
+          li.innerHTML = `${data.success}: jajaja`;
+        }
+        // const li = document.createElement('button');
+        // li.innerHTML = `${data.success}: ${data.newChannel}`;
+        document.querySelector('#canales').append(li);
+        document.querySelector('#newChannel').value="";
     });
+});
